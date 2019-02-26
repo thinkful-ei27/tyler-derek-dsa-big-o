@@ -231,3 +231,122 @@ function triangle(n) {
 *O(n)* because it's essentially another countdown loop.
 
 ## Iterative
+
+FORRRRRR loop O(n);
+
+
+# string splitter
+function split(str, sep) {
+    var idx = str.indexOf(sep);
+    if (idx == -1) 
+        return [str];
+		//you don't have to return an array, you can return a string as an array of 
+		//character 
+		//return str;
+    return [str.slice(0, idx)].concat(split(str.slice(idx + sep.length), sep))
+}
+
+O(n), no nested loops, number of operations scales with number of seperators
+
+## Iterative 
+while loop, no nesting, O(n);
+
+#binary rep
+
+function convertToBinary(num, counter=0){
+    if(num>0){
+        let binary = Math.floor(num%2); //save the remainder in binary
+        counter++
+        console.log(counter)//divide the number by 2 and send that to the function again
+		//carry the remainder to the next recursion call
+        return (convertToBinary(Math.floor(num/2), counter)+ binary);
+    }else{
+        console.log(counter);
+        return ''; //base case - at some point the divisions will lead to 0
+    }
+}
+
+n*log(n) doubling input does not double amount of work, number / 2 each run
+
+##Iterative 
+
+also n*log(n) input cut in half each time
+
+# factorial
+
+function factorial(n) {  
+  // Base Case - when n is equal to 0, we stop the recursion
+  if (n === 0) {
+    return 1;
+  }
+  // This is our Recursive Case
+  // It will run for all other conditions except when n is equal to 0
+  return n * factorial(n - 1);
+}
+
+
+linear O(n) decrementing input calls scale with size of input
+
+##iterative 
+O(n) 1 for loop
+
+
+# fib
+
+function fibonacci(n) {
+  // Base case
+  if (n <= 0) {
+    return 0;
+    count++
+  }
+  // Base case
+  if (n <= 2) {
+    console.log(count)
+    return 1;
+  }	
+  // Recursive case
+  return fibonacci(n - 1, count) + fibonacci(n - 2, count);	
+}
+
+each call creates 2 new calls, exponential O(2^n);
+
+
+##iterative 
+linear one for loop
+
+#Anagrams 
+
+function anagrams(prefix, str, counter=0){
+    if(str.length <= 1){
+        console.log(counter)
+        console.log(`The anagram is ${prefix}${str}`);
+    } else {
+        for(let i=0; i<str.length; i++){
+            counter++;
+            let currentLetter = str.substring(i, i+1); 
+            let previousLetters = str.substring(0,i);
+            let afterLetters = str.substring(i+1);
+            anagrams(prefix+currentLetter, previousLetters+afterLetters, counter);
+        }
+    }
+}
+function printAnagram(word){
+    //console.log(`The word for which we will find an anagram is ${word}`);
+    anagrams(' ', word);
+
+}
+
+O(2^n) as the input grows the number of times the function is called increases exponentially
+
+##iterative
+
+
+# animal hierarchy + organization chart
+
+ O(n^k) where k is the nesting level of trees;  
+ performing nested comparisons, but we dont know how deep the levels of comparison go;
+
+
+
+
+
